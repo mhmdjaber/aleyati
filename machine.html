@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aleyati – Machine Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/machine.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar (same as index.html) -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo.jpeg" alt="Aleyati Logo">
+      <span>ALEYATI</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ========== SUBTYPES PAGE ========== -->
+<div id="page-subtypes" class="page hidden">
+  <div class="big-number" id="subtypesBigNumber">01</div>
+  <h1 id="subtypesTitle">Select Type</h1>
+  <div class="subtypes-grid" id="subtypesGrid"></div>
+  <div class="back-link" id="backToHomeFromSubtypes">← Back to Home</div>
+</div>
+
+<!-- ========== DATES PAGE ========== -->
+<div id="page-dates" class="page hidden">
+  <div class="big-number" id="datesBigNumber">01</div>
+  <h1 id="datesMachineName">Machine Details</h1>
+  <ul class="vertical-list" id="datesList"></ul>
+  <div class="back-link" id="backFromDates">← Back</div>
+</div>
+
+<!-- ========== HOURS PAGE ========== -->
+<div id="page-hours" class="page hidden">
+  <div class="big-number" id="hoursBigNumber">01</div>
+  <h1 id="hoursTitle">Hourly Details</h1>
+  <ul class="vertical-list" id="hoursList"></ul>
+  <div class="back-link" id="backToDates">← Back to dates</div>
+</div>
+
+<!-- ========== MODAL POPUP ========== -->
+<div id="modal" class="modal">
+  <div class="modal-card">
+    <img id="modalImage" src="" alt="Location">
+    <div class="modal-card-content">
+      <h3 id="modalTitle">Location & Time</h3>
+      <p id="modalDescription">Details will appear here.</p>
+      <button class="close-modal" id="closeModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/machine.js"></script>
+</body>
+</html>

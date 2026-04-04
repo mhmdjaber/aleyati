@@ -1,0 +1,194 @@
+/* Additional styles for the machine detail pages */
+
+/* pages container */
+.page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+.page.hidden {
+  display: none;
+}
+
+/* big number */
+.big-number {
+  font-size: 6rem;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+  margin: 1rem 0;
+  opacity: 0.9;
+  font-family: monospace;
+  letter-spacing: 5px;
+}
+
+/* vertical list (dates / hours) */
+.vertical-list {
+  max-width: 500px;
+  margin: 2rem auto;
+  list-style: none;
+  padding: 0;
+}
+.vertical-list li {
+  margin: 1rem 0;
+}
+.rect-block {
+  display: block;
+  background: #010007;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.rect-block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: #222;
+}
+
+/* back link */
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: rgba(0,0,0,0.1);
+  padding: 8px 20px;
+  border-radius: 40px;
+  transition: background 0.2s;
+}
+.back-link:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+/* subtypes grid (cards) */
+.subtypes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.subtype-card {
+  background: #010007;
+  width: 280px;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.subtype-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+.subtype-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.subtype-card h3 {
+  margin: 1rem 0;
+  color: white;
+  font-size: 1.3rem;
+}
+
+/* modal popup */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+}
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-card {
+  max-width: 400px;
+  width: 90%;
+  background: #010007;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  text-align: center;
+  animation: popIn 0.4s ease-out;
+}
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.modal-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.modal-card-content {
+  padding: 1.5rem;
+}
+.modal-card-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #ffc20f;
+}
+.modal-card-content p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+.close-modal {
+  background: #ffc20f;
+  color: black;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.close-modal:hover {
+  background: #e6b422;
+}
+
+/* ripple effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.8s;
+}
+.ripple:active:after {
+  transform: scale(0);
+  opacity: 0.3;
+  transition: 0s;
+}
