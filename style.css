@@ -55,7 +55,7 @@ flex-wrap:wrap;
 .machine-card{
   background:#010007;
   width:100%;
-  max-width:390px;
+  max-width:380px;
   text-align:center;
   border-radius:10px;
   overflow:hidden;
