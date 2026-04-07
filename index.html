@@ -106,5 +106,30 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
 
 }
 </script>
+  <div id="notifyBox" style="
+position: fixed;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+background: black;
+color: white;
+padding: 15px 20px;
+border-radius: 8px;
+z-index: 9999;
+text-align: center;
+">
+🚨 Get notified when new updates are added.<br><br>
+<button id="enableNotif">Enable Notifications</button>
+<button onclick="document.getElementById('notifyBox').remove()">Later</button>
+</div>
+
+<script>
+document.getElementById("enableNotif").onclick = function () {
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.showNativePrompt();
+  });
+  document.getElementById("notifyBox").remove();
+};
+</script>
 </body>
 </html>
