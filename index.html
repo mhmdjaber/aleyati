@@ -81,19 +81,29 @@ OneSignalDeferred.push(async function(OneSignal) {
   </footer>
 
   <script src="home.js"></script>
-  <script>
+<script>
 if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+
   const banner = document.createElement("div");
-  banner.innerHTML = "📱 Add ALEYATI to your Home Screen to receive notifications.";
+  banner.innerHTML = "📱 iPhone users: Add ALEYATI to your Home Screen to receive notifications.";
+
   banner.style.position = "fixed";
   banner.style.bottom = "0";
   banner.style.width = "100%";
   banner.style.background = "black";
   banner.style.color = "white";
   banner.style.textAlign = "center";
-  banner.style.padding = "10px";
+  banner.style.padding = "12px";
   banner.style.zIndex = "9999";
+  banner.style.fontSize = "14px";
+
   document.body.appendChild(banner);
+
+  // remove banner after 20 seconds
+  setTimeout(() => {
+    banner.remove();
+  }, 20000);
+
 }
 </script>
 </body>
