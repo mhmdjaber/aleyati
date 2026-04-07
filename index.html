@@ -9,6 +9,7 @@
 
   <link rel="icon" href="logo.jpeg" type="image/jpeg">
   <link rel="apple-touch-icon" href="logo.jpeg">
+
   <meta property="og:title" content="ALEYATI | Machine Loss Counter">
   <meta property="og:description" content="ALEYATI is a tracking website that displays counted statistics and monitored data about destroyed war machines.">
   <meta property="og:type" content="website">
@@ -23,26 +24,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9PE05YWXV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-B9PE05YWXV');
   </script>
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-window.OneSignalDeferred = window.OneSignalDeferred || [];
-OneSignalDeferred.push(async function(OneSignal) {
-  await OneSignal.init({
-    appId: "7a924a4f-c2ae-4122-861a-7fc7cbf3fe7a",
-    notifyButton: {
-      enable: true
-    }
-  });
-});
-</script>
+
+  <!-- OneSignal Notifications -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "7a924a4f-c2ae-4122-861a-7fc7cbf3fe7a",
+        notifyButton: {
+          enable: true
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <nav class="navbar">
@@ -81,55 +84,65 @@ OneSignalDeferred.push(async function(OneSignal) {
   </footer>
 
   <script src="home.js"></script>
-<script>
-if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
 
-  const banner = document.createElement("div");
-  banner.innerHTML = "📱 iPhone users: Add ALEYATI to your Home Screen to receive notifications.";
+  <script>
+    const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
-  banner.style.position = "fixed";
-  banner.style.bottom = "0";
-  banner.style.width = "100%";
-  banner.style.background = "black";
-  banner.style.color = "white";
-  banner.style.textAlign = "center";
-  banner.style.padding = "12px";
-  banner.style.zIndex = "9999";
-  banner.style.fontSize = "14px";
+    if (isIPhone) {
+      const banner = document.createElement("div");
+      banner.innerHTML = "📱 iPhone users: Add ALEYATI to your Home Screen to receive notifications.";
 
-  document.body.appendChild(banner);
+      banner.style.position = "fixed";
+      banner.style.bottom = "0";
+      banner.style.left = "0";
+      banner.style.width = "100%";
+      banner.style.background = "black";
+      banner.style.color = "white";
+      banner.style.textAlign = "center";
+      banner.style.padding = "12px";
+      banner.style.zIndex = "9999";
+      banner.style.fontSize = "14px";
 
-  // remove banner after 20 seconds
-  setTimeout(() => {
-    banner.remove();
-  }, 10000);
+      document.body.appendChild(banner);
 
-}
-</script>
-  <div id="notifyBox" style="
-position: fixed;
-bottom: 20px;
-left: 50%;
-transform: translateX(-50%);
-background: black;
-color: white;
-padding: 15px 20px;
-border-radius: 8px;
-z-index: 9999;
-text-align: center;
-">
-🚨 Get notified when new updates are added.<br><br>
-<button id="enableNotif">Enable Notifications</button>
-<button onclick="document.getElementById('notifyBox').remove()">Later</button>
-</div>
+      setTimeout(() => {
+        banner.remove();
+      }, 20000);
+    } else {
+      const notifyBox = document.createElement("div");
+      notifyBox.id = "notifyBox";
+      notifyBox.style.position = "fixed";
+      notifyBox.style.bottom = "20px";
+      notifyBox.style.left = "50%";
+      notifyBox.style.transform = "translateX(-50%)";
+      notifyBox.style.background = "black";
+      notifyBox.style.color = "white";
+      notifyBox.style.padding = "15px 20px";
+      notifyBox.style.borderRadius = "8px";
+      notifyBox.style.zIndex = "9999";
+      notifyBox.style.textAlign = "center";
+      notifyBox.style.maxWidth = "90%";
+      notifyBox.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
 
-<script>
-document.getElementById("enableNotif").onclick = function () {
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.showNativePrompt();
-  });
-  document.getElementById("notifyBox").remove();
-};
-</script>
+      notifyBox.innerHTML = `
+        🚨 Get notified when new updates are added.<br><br>
+        <button id="enableNotif" style="margin-right:10px; padding:8px 14px; border:none; border-radius:5px; cursor:pointer;">Enable Notifications</button>
+        <button id="laterNotif" style="padding:8px 14px; border:none; border-radius:5px; cursor:pointer;">Later</button>
+      `;
+
+      document.body.appendChild(notifyBox);
+
+      document.getElementById("enableNotif").onclick = function () {
+        OneSignalDeferred.push(async function(OneSignal) {
+          await OneSignal.showNativePrompt();
+        });
+        notifyBox.remove();
+      };
+
+      document.getElementById("laterNotif").onclick = function () {
+        notifyBox.remove();
+      };
+    }
+  </script>
 </body>
 </html>
