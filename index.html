@@ -31,14 +31,17 @@
 
     gtag('config', 'G-B9PE05YWXV');
   </script>
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "7a924a4f-c2ae-4122-861a-7fc7cbf3fe7a",
-    });
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
+  await OneSignal.init({
+    appId: "7a924a4f-c2ae-4122-861a-7fc7cbf3fe7a",
+    notifyButton: {
+      enable: true
+    }
   });
+});
 </script>
 </head>
 <body>
